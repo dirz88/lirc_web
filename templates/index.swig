@@ -36,6 +36,12 @@
       {% endfor %}
       </ul>
 
+      <hr />
+
+      <ul class="remotes-nav">
+        <li><button class="btn btn-wide btn-large btn-inverse command-once" href="/zwave/2/on">Light On</button></li>
+        <li><button class="btn btn-wide btn-large btn-inverse command-once" href="/zwave/2/off">Light Off</button></li>
+      </ul>
 
       <hr />
 

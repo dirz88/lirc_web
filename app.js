@@ -107,6 +107,7 @@ labelFor = labels(config.remoteLabels, config.commandLabels);
 // Index
 app.get('/', function (req, res) {
   var refinedRemotes = refineRemotes(lircNode.remotes);
+
   res.send(JST.index({
     remotes: refinedRemotes,
     devices: config.devices,
@@ -217,7 +218,7 @@ app.post('/devices/:device/:command', function(req, res) {
     request(commandReq);
 
     res.setHeader('Cache-Control', 'no-cache');
-    res.send(200);
+    res.sendStatus(200);
 });
 
 // Send :remote/:command one time

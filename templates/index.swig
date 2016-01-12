@@ -72,7 +72,7 @@
 
       <hr />
 
-      <ul class="remotes">
+      <ul class="devices">
       {% for device in devices %}
         {% set deviceName = device.name %}
         <li class="remote" id="{{ deviceName|url_encode }}">
@@ -80,7 +80,7 @@
           {% for command in device.commands %}
             {% set commandName = loop.key %}
              <li class="command">
-               <button class="command-link {% if repeaters[remoteName][command] %}command-repeater{% else %}command-once{% endif %} btn btn-wide btn-large btn-primary" href="/devices/{{ deviceName }}/{{ commandName|url_encode }}">{{ commandName }}</button>
+               <button class="command-link {% if repeaters[remoteName] && repeaters[remoteName][command] %}command-repeater{% else %}command-once{% endif %} btn btn-wide btn-large btn-primary" href="/devices/{{ deviceName }}/{{ commandName|url_encode }}">{{ commandName }}</button>
              </li>
           {% endfor %}
           </ul>

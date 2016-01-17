@@ -36,5 +36,27 @@
        "AUX2",
        "AUX3"
      ]
+  },
+  "areas": {
+    "Office": {
+      "macros": [
+        "Listen to Music"
+      ],
+      "remotes": [
+        "Yamaha",
+        "TV"
+      ]
+    },
+    "Living Room": {
+      "macros": [
+        "Listen to Music",
+        "Play Xbox 360"
+      ],
+      "remotes": [
+        "TV",
+        "Xbox 360",
+        "Yamaha"
+      ]
+    }
   }
 }

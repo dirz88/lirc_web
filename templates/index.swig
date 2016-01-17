@@ -12,33 +12,71 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/flat-ui.css" />
     <link rel="stylesheet" href="css/compiled/app.css" />
+    <link rel="stylesheet" href="css/pushy.css" />
     {% include "./favicons.swig" %}
   </head>
   <body ontouchstart="">
+  <!-- Pushy Menu -->
+  <nav class="pushy pushy-left">
+      <ul>
+        <a class="" href="/">Home</a>
+      </ul>
+      <ul class="macros-navmenu">
+          {% for area in areas %}
+            {% set area = loop.key %}
+            <a class="" href="#{{ area }}">{{ area }}</a>
+                {% for arearemotes2 in area.arearemotes %}
+                    {% set arearemotescommand2 = loop.key %}
+                        <a class="pushyremotes" href="#{{ arearemotes2 }}">{{ labelForRemote(arearemotes2) }}</a>
+                    {% endfor %}
+            <br>
+          {% endfor %}
+      </ul>
+  </nav>
+
+  <!-- Site Overlay -->
+  <div class="site-overlay"></div>
+  <!-- Your Content -->
     <div id="container">
+        <!-- Menu Button -->
+    </div>
+    <div id="container">
+        <h2 id="menubar">
+            <div class="menu-btn">&#9776;</div>
+        </h2>
       <h1 id="titlebar">
         <a class="back hidden"><img src="images/left-arrow.png" height="40" width="40" /></a>
         <span id="title" data-text="Universal Remote">Universal Remote</span>
       </h1>
-      <ul class="remotes-nav">
-      {% for remote in remotes %}
-        {% set remoteName = loop.key %}
-        <li><a class="btn btn-wide btn-large btn-info" href="#{{ remoteName }}">{{ labelForRemote(remoteName) }}</a></li>
-      {% endfor %}
-      </ul>
 
-      <hr />
 
-      <ul class="macros-nav">
-      {% for macro in macros %}
-        {% set macroName = loop.key %}
-        <li><button class="btn btn-wide btn-large btn-warning macro-link" href="/macros/{{ macroName|url_encode }}">{{ macroName }}</button></li>
-      {% endfor %}
-      </ul>
+    {% for area in areas %}
+        {% set area = loop.key %}
+            <ul class="macros-nav">
+                <h3>{{area}}</h3>
+                   {% for areamacros in area.areamacros %}
+                       {% set areamacroscommand = loop.key %}
+                           <li><button class="btn btn-wide btn-large btn-warning macro-link" href="/macros/{{ areamacros }}">{{ areamacros }}</button></li>
+                {% endfor %}
+            </ul>
+    {% endfor %}
 
+    <!-- Regular Items -->
 
       <div class="prev"></div>
-
+    <ul class="macros">
+        {% for area in areas %}
+            {% set area = loop.key %}
+                <li class="macro" id="{{ area }}">
+                <ul class="macrocommands">
+                  {% for areamacros in area.areamacros %}
+                       {% set areamacroscommand = loop.key %}
+                           <li><button class="btn btn-wide btn-large btn-warning macro-link" href="/macros/{{ areamacros }}">{{ areamacros }}</button></li>
+                {% endfor %}
+                </li>
+                </ul>
+        {% endfor %}
+    </ul>
       <ul class="remotes">
       {% for remote in remotes %}
         {% set remoteName = loop.key %}
@@ -54,7 +92,6 @@
       {% endfor %}
       </ul>
     </div>
-
     <div class="next"></div>
 
     <footer>
@@ -64,5 +101,6 @@
     </footer>
 
     <script src="js/compiled/app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/vendor/pushy.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

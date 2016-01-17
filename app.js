@@ -109,6 +109,9 @@ app.get('/', function (req, res) {
   res.send(JST.index({
     remotes: refinedRemotes,
     macros: config.macros,
+    areas: config.areas,
+    areamacros: config.areas.areamacros,
+    arearemotes: config.areas.arearemotes,
     repeaters: config.repeaters,
     labelForRemote: labelFor.remote,
     labelForCommand: labelFor.command,
@@ -149,6 +152,20 @@ app.get('/macros/:macro.json', function (req, res) {
   }
 });
 
+// List all areas in JSON format
+app.get('/areas.json', function (req, res) {
+  res.json(config.areas);
+});
+
+// List all macros for a specific area in JSON format
+app.get('/areas/:area/areamacros.json', function (req, res) {
+  res.json(config.areas[req.params.area].areamacros);
+});
+
+// List all remotes for a specific area in JSON format
+app.get('/areas/:area/arearemotes.json', function (req, res) {
+  res.json(config.areas[req.params.area].arearemotes);
+});
 
 // Send :remote/:command one time
 app.post('/remotes/:remote/:command', function (req, res) {

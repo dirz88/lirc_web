@@ -90,23 +90,43 @@ $(function() {
     // Back button shown on remote pages
     $('.back').on('click', function(evt) {
         $('.remote.active').removeClass('active');
+        $('.macro.active').removeClass('active');
         $('.remotes-nav').removeClass('hidden');
         $('.macros-nav').removeClass('hidden');
         $('.back').addClass('hidden');
         $('#title').html($('#title').attr('data-text'));
         $('#titlebar').removeClass('is-remote');
+        $('#menubar').removeClass('is-remote');
     });
 
-    // Navigate to remote pages
-    $('.remotes-nav a').on('click', function(evt) {
+    // Navigate to specific Remote
+    $('.remotes-navmenu a').on('click', function(evt) {
         evt.preventDefault();
         var href = $(this).attr('href');
         $('.remotes-nav').addClass('hidden');
         $('.macros-nav').addClass('hidden');
+        $('.remote.active').removeClass('active');
+        $('.macro.active').removeClass('active');
         $(href).addClass('active');
         $('.back').removeClass('hidden');
         $('#title').html($(this).html());
         $('#titlebar').addClass('is-remote');
+        $('#menubar').addClass('is-remote');
+    });
+
+    // Navigate to Specific Macro-Area
+    $('.macros-navmenu a').on('click', function(evt) {
+        evt.preventDefault();
+        var href = $(this).attr('href');
+        $('.remotes-nav').addClass('hidden');
+        $('.macros-nav').addClass('hidden');
+        $('.remote.active').removeClass('active');
+        $('.macro.active').removeClass('active');
+        $(href).addClass('active');
+        $('.back').removeClass('hidden');
+        $('#title').html($(this).html());
+        $('#titlebar').addClass('is-remote');
+        $('#menubar').addClass('is-remote');
     });
 
     // Remove 300ms delay after tapping

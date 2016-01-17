@@ -42,5 +42,28 @@
       "S7",
       "S8"
     ]
+  },
+  "areas": {
+    "Office": {
+      "areamacros": [
+        "HomeCinema-On-Off"
+      ],
+      "arearemotes": [
+        "Onkyo_RC-710M",
+        "Sharp_GA538WJSA",
+        "GENERIC-LED-STRIP"
+      ]
+    },
+    "Living Room": {
+      "areamacros": [
+        "Listen to Music",
+        "Play Xbox 360"
+      ],
+      "arearemotes": [
+        "TV",
+        "Xbox 360",
+        "Yamaha"
+      ]
+    }
   }
 }
